@@ -6,12 +6,11 @@ import AfroPattern from '@/components/AfroPattern';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimony() {
-  const quoteRef = useRef<HTMLElement>(null);
+  const quoteRef = useRef<HTMLQuoteElement>(null);
   const attributionRef = useRef<HTMLDivElement>(null);
   const bigQuoteRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Big quote mark fades in slowly
     if (bigQuoteRef.current) {
       gsap.from(bigQuoteRef.current, {
         opacity: 0,
@@ -26,7 +25,6 @@ export default function Testimony() {
       });
     }
 
-    // Quote rises up dramatically
     if (quoteRef.current) {
       gsap.from(quoteRef.current, {
         y: 80,
@@ -42,7 +40,6 @@ export default function Testimony() {
       });
     }
 
-    // Attribution slides in
     if (attributionRef.current) {
       gsap.from(attributionRef.current, {
         y: 30,
@@ -67,7 +64,6 @@ export default function Testimony() {
     >
       <AfroPattern opacity={0.06} />
 
-      {/* Full-bleed quote mark */}
       <div
         ref={bigQuoteRef}
         className="absolute top-[-4rem] left-[-2rem] font-display pointer-events-none select-none leading-none"
@@ -82,7 +78,6 @@ export default function Testimony() {
           What people are saying
         </p>
 
-        {/* The quote */}
         <blockquote
           ref={quoteRef}
           className="font-display leading-[1.15] mb-16"
@@ -97,7 +92,6 @@ export default function Testimony() {
           "The beat dropped. Then my walls did. I have not been the same since."
         </blockquote>
 
-        {/* Attribution */}
         <div ref={attributionRef} className="flex items-center justify-center gap-6">
           <div style={{ width: '40px', height: '0.5px', backgroundColor: 'rgba(240,237,230,0.2)' }} />
           <div className="text-center">
@@ -111,10 +105,9 @@ export default function Testimony() {
           <div style={{ width: '40px', height: '0.5px', backgroundColor: 'rgba(240,237,230,0.2)' }} />
         </div>
 
-        {/* Teaser for more */}
         <p
           className="font-display italic mt-20 text-lg"
-          style={{ color: 'rgba(240,237,230,0.25)', fontStyle: 'italic' }}
+          style={{ color: 'rgba(240,237,230,0.25)' }}
         >
           More testimonies coming post-launch.
         </p>
