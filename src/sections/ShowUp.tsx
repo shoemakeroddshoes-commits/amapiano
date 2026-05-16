@@ -22,25 +22,45 @@ export default function ShowUp() {
   const confessionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const items = listRef.current?.querySelectorAll('.showup-row');
-    if (items) {
-      gsap.from(items, {
-        x: -60,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: listRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
+    const rows = listRef.current?.querySelectorAll('.showup-row');
+    if (rows) {
+      rows.forEach((row) => {
+        const condition = row.querySelector('.condition-text');
+        const come = row.querySelector('.come-text');
+
+        // Each row's condition slides in from left
+        gsap.from(condition, {
+          x: -80,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        // Each row's COME. slams in from right with slight delay
+        gsap.from(come, {
+          x: 80,
+          opacity: 0,
+          duration: 0.7,
+          delay: 0.15,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
       });
     }
 
+    // Confession block fades up
     if (confessionRef.current) {
       gsap.from(confessionRef.current, {
-        y: 50,
+        y: 60,
         opacity: 0,
         duration: 1.2,
         ease: 'power4.out',
@@ -62,7 +82,10 @@ export default function ShowUp() {
       <AfroPattern opacity={0.04} />
 
       <div className="relative max-w-[1200px] mx-auto px-6 md:px-8">
-        <p className="font-mono text-[0.65rem] tracking-[0.25em] uppercase mb-12" style={{ color: 'rgba(240,237,230,0.4)' }}>
+        <p
+          className="font-mono text-[0.65rem] tracking-[0.25em] uppercase mb-12"
+          style={{ color: 'rgba(240,237,230,0.5)' }}
+        >
           The door is open &middot; No conditions &middot; No record check
         </p>
 
@@ -70,26 +93,28 @@ export default function ShowUp() {
           {ITEMS.map((item) => (
             <div
               key={item.condition}
-              className="showup-row grid grid-cols-1 sm:grid-cols-[1fr_auto] items-baseline py-5 md:py-6 border-b gap-2 sm:gap-8 group cursor-default"
-              style={{ borderColor: 'rgba(240,237,230,0.1)' }}
+              className="showup-row grid grid-cols-[1fr_auto] items-center py-6 md:py-8 border-b"
+              style={{ borderColor: 'rgba(240,237,230,0.08)' }}
             >
-              {/* Left: condition — italic Cormorant */}
+              {/* Condition — left */}
               <span
-                className="body-text italic transition-colors duration-300 group-hover:text-[#F0EDE6]"
-                style={{ color: 'rgba(240,237,230,0.55)', fontSize: '1.2rem' }}
+                className="condition-text font-dm italic text-lg md:text-2xl"
+                style={{ color: 'rgba(240,237,230,0.75)' }}
               >
                 {item.condition} &mdash;
               </span>
 
-              {/* Right: CTA — large display */}
+              {/* COME. — right, massive */}
               <span
-                className="font-display uppercase text-right transition-all duration-500 group-hover:tracking-widest group-hover:text-[#C9A227]"
+                className="come-text font-display transition-all duration-300 hover:text-[#C9A227] hover:scale-105 cursor-default"
                 style={{
-                  fontSize: 'clamp(3.2rem, 8vw, 6rem)',
+                  fontSize: 'clamp(3.5rem, 9vw, 7rem)',
                   color: '#F0EDE6',
                   fontWeight: 700,
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.03em',
                   lineHeight: 0.95,
+                  display: 'inline-block',
+                  transformOrigin: 'right center',
                 }}
               >
                 Come.
@@ -99,21 +124,35 @@ export default function ShowUp() {
         </div>
 
         {/* Confession block */}
-        <div ref={confessionRef} className="mt-14 pt-12" style={{ borderTop: '1px solid rgba(240,237,230,0.12)' }}>
+        <div
+          ref={confessionRef}
+          className="mt-16 pt-12"
+          style={{ borderTop: '1px solid rgba(240,237,230,0.1)' }}
+        >
           <div className="max-w-[600px]">
-            <p className="body-text mb-5" style={{ color: 'rgba(240,237,230,0.8)', fontSize: '1.2rem' }}>
+            <p
+              className="font-dm text-base leading-[1.9] mb-5"
+              style={{ color: 'rgba(240,237,230,0.85)' }}
+            >
               Nobody is checking your record at the door.{' '}
-              <em style={{ color: '#F0EDE6', fontStyle: 'normal', fontWeight: 600 }}>
+              <strong style={{ color: '#F0EDE6', fontWeight: 600 }}>
                 The prodigal didn&apos;t shower before he came home.
-              </em>{' '}
+              </strong>{' '}
               He showed up smelling like pigs and the father ran toward him.
             </p>
-            <p className="body-text mb-5" style={{ color: 'rgba(240,237,230,0.8)', fontSize: '1.2rem' }}>
+            <p
+              className="font-dm text-base leading-[1.9] mb-5"
+              style={{ color: 'rgba(240,237,230,0.85)' }}
+            >
               This is not a metaphor we borrowed. This is theology we built the whole thing on.
             </p>
             <p
-              className="font-mono text-[0.78rem] leading-[2] mt-6"
-              style={{ color: 'rgba(240,237,230,0.55)', borderLeft: '3px solid #C9A227', paddingLeft: '1.2rem' }}
+              className="font-mono text-[0.78rem] leading-[2] mt-8"
+              style={{
+                color: 'rgba(240,237,230,0.6)',
+                borderLeft: '3px solid #C9A227',
+                paddingLeft: '1.2rem',
+              }}
             >
               Just come.<br />
               We&apos;ll explain 3:16 later.
