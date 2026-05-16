@@ -18,11 +18,15 @@ export default function Navigation() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  e.preventDefault();
+  setMobileOpen(false);
+  const el = document.querySelector(href);
+  if (el) {
+    const navHeight = 68;
+    const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+};
 
   return (
     <nav
