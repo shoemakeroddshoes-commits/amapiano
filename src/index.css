@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-gold: #C9A227;
+    --color-sapphire: #0A1628;
+    --color-scarlet: #8B1A1A;
+    --color-purple: #2D1B4E;
+    --color-offwhite: #F0EDE6;
+    --color-void: #0A0806;
+    --color-parchment: #F0EDE6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-sapphire);
+    color: var(--color-offwhite);
+    font-family: 'Instrument Serif', serif;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .font-bebas {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-dm {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .font-instrument {
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Body text: Instrument Serif, medium weight, editorial line-height */
+  .body-text {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 500;
+    line-height: 1.85;
+    font-size: 1.05rem;
+  }
+
+  .text-gold {
+    color: var(--color-gold);
+  }
+
+  .bg-gold {
+    background-color: var(--color-gold);
+  }
+
+  .bg-sapphire {
+    background-color: var(--color-sapphire);
+  }
+
+  .bg-scarlet {
+    background-color: var(--color-scarlet);
+  }
+
+  .bg-purple {
+    background-color: var(--color-purple);
+  }
+
+  .bg-offwhite {
+    background-color: var(--color-offwhite);
+  }
+
+  .border-gold {
+    border-color: var(--color-gold);
+  }
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
