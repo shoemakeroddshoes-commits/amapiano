@@ -24,7 +24,6 @@ export default function Connect() {
         },
       });
     }
-
     if (rightRef.current) {
       gsap.from(rightRef.current, {
         y: 60,
@@ -40,14 +39,13 @@ export default function Connect() {
     }
   }, []);
 
-  const inputCls = "w-full px-4 py-4 text-[0.95rem] outline-none transition-all duration-300 font-display bg-transparent";
+  const inputCls = "w-full px-4 py-4 text-[0.95rem] outline-none transition-all duration-300 bg-transparent font-dm";
   const inputStyle: React.CSSProperties = {
-    border: '0.5px solid rgba(10,10,10,0.2)',
+    border: '1px solid rgba(10,10,10,0.35)',
     color: '#080808',
-    fontFamily: "'Cormorant Garamond', serif",
   };
   const labelCls = "block font-mono text-[0.52rem] uppercase tracking-[0.28em] mb-2";
-  const labelStyle: React.CSSProperties = { color: 'rgba(10,10,10,0.35)' };
+  const labelStyle: React.CSSProperties = { color: 'rgba(10,10,10,0.55)' };
 
   return (
     <section
@@ -55,7 +53,6 @@ export default function Connect() {
       className="relative py-28 md:py-40 overflow-hidden"
       style={{ zIndex: 1, backgroundColor: '#C9A227' }}
     >
-      {/* Background texture */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -71,38 +68,34 @@ export default function Connect() {
 
         {/* Left */}
         <div ref={leftRef} className="md:w-[42%]">
-          <p className="connect-left-item font-mono text-[0.52rem] tracking-[0.28em] uppercase mb-8" style={{ color: 'rgba(10,10,10,0.4)' }}>
+          <p className="connect-left-item font-mono text-[0.52rem] tracking-[0.28em] uppercase mb-8"
+            style={{ color: 'rgba(10,10,10,0.55)' }}>
             You felt something. Don&apos;t ignore it.
           </p>
 
-          <div style={{ overflow: 'hidden' }}>
-            <h2
-              className="connect-left-item font-display leading-[0.88] mb-8"
-              style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)', color: '#080808', fontWeight: 700 }}
-            >
-              Tell us<br />
-              <span
-                className="italic"
-                style={{ color: 'rgba(10,10,10,0.3)', fontWeight: 600 }}
-              >
-                you&apos;re coming.
-              </span>
-            </h2>
-          </div>
+          <h2
+            className="connect-left-item font-display leading-[0.88] mb-8"
+            style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)', color: '#080808', fontWeight: 700 }}
+          >
+            Tell us<br />
+            <span className="italic" style={{ color: 'rgba(10,10,10,0.35)', fontWeight: 600 }}>
+              you&apos;re coming.
+            </span>
+          </h2>
 
           <div className="connect-left-item space-y-4 mb-10">
-            <p className="body-text" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '1.1rem' }}>
+            <p className="font-dm text-[0.95rem] leading-[1.85]" style={{ color: 'rgba(10,10,10,0.8)' }}>
               Drop your name and WhatsApp. Tell us what you&apos;re running toward.
             </p>
-            <p className="body-text" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '1.1rem' }}>
+            <p className="font-dm text-[0.95rem] leading-[1.85]" style={{ color: 'rgba(10,10,10,0.8)' }}>
               Obed personally reaches out within 24 hours. No script. No spam. Just a real conversation.
             </p>
-            <p className="body-text" style={{ color: 'rgba(10,10,10,0.65)', fontSize: '1.1rem' }}>
+            <p className="font-dm text-[0.95rem] leading-[1.85]" style={{ color: 'rgba(10,10,10,0.8)' }}>
               Or skip the form — WhatsApp us directly.
             </p>
           </div>
 
-          <a
+          
             href="https://wa.me/265000000000"
             target="_blank"
             rel="noopener noreferrer"
@@ -132,8 +125,8 @@ export default function Connect() {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className={inputCls}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.5)')}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.2)')}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.7)')}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.35)')}
                 />
               </div>
               <div>
@@ -145,8 +138,8 @@ export default function Connect() {
                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                   className={inputCls}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.5)')}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.2)')}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.7)')}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.35)')}
                 />
               </div>
             </div>
@@ -160,13 +153,13 @@ export default function Connect() {
                 style={{
                   ...inputStyle,
                   appearance: 'none',
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(10,10,10,0.3)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(10,10,10,0.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'right 14px center',
                   backgroundColor: 'transparent',
                 }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.5)')}
-                onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.2)')}
+                onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.7)')}
+                onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(10,10,10,0.35)')}
               >
                 <option value="" style={{ backgroundColor: '#C9A227' }}>Pick one</option>
                 <option value="sound" style={{ backgroundColor: '#C9A227' }}>Sound &amp; Worship</option>
@@ -178,7 +171,7 @@ export default function Connect() {
 
             <button
               type="submit"
-              className="w-full font-mono text-[0.65rem] font-bold tracking-[0.22em] uppercase py-5 mt-2 transition-all duration-300 hover:brightness-90"
+              className="w-full font-mono text-[0.65rem] font-bold tracking-[0.22em] uppercase py-5 transition-all duration-300 hover:brightness-90"
               style={{ backgroundColor: '#080808', color: '#C9A227' }}
             >
               Send it
